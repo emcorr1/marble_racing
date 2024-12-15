@@ -249,6 +249,7 @@ def simulate_season(R,p,m,marble_names,current_points_dict,points_key):
     plt.bar(validation_marbles,validation_points)
     plt.title('Simulation Validation: Points Total by Marble')
     plt.xlabel('Marble Name')
+    plt.xticks(rotation=90)
     plt.ylabel('Percent of Expected Simulation Points')
     plt.axhline(y=101, color='r', linestyle='--')
     plt.axhline(y=99, color='r', linestyle='--')
