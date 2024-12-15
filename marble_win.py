@@ -207,10 +207,10 @@ def simulate_season(R,p,m,marble_names,current_points_dict,points_key):
         champ_prob_dict[marble] = champ_count_dict[marble]/L*100
         podium_prob_dict[marble] = podium_count_dict[marble]/L*100
     # print dicts
-    print('Champion Probability:')
-    print(champ_prob_dict)
-    print('Podium Probability:')
-    print(podium_prob_dict)
+    #print('Champion Probability:')
+    #print(champ_prob_dict)
+    #print('Podium Probability:')
+    #print(podium_prob_dict)
     # plot championship results
     champ_prob_dict = dict(sorted(champ_prob_dict.items(), key=lambda item: item[1]))
     champ_marbles = list(champ_prob_dict.keys())
