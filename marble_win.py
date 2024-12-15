@@ -1,9 +1,7 @@
 # marble racing win probability
 
-import numpy as np
 from scipy.stats import binom
-import math
-import random
+from random import random, shuffle, sample
 from copy import copy
 import matplotlib.pyplot as plt
 
@@ -15,7 +13,7 @@ def censored_bin_cdf(N,p):
     # set censor
     censor = 0.01
     # build pdf
-    pdf = binom.pmf(np.arange(N+1),N,p)
+    pdf = binom.pmf(list(range(N+1)),N,p)
     # censor where p(N)>=censor & re-normalize
     pdf_censor = [float(x) for x in pdf if x>=censor]
     pdf_sum = sum(pdf_censor)
@@ -34,7 +32,7 @@ def cdf_method(X_list,cdf_list):
     # cdf_list = list of cdf values for X
 
     # sample from random U(0,1)
-    u = random.random()
+    u = random()
     # set placeholder
     N = X_list[0]
     # find greatest number from cdf_list that is greater
@@ -52,12 +50,12 @@ def random_race_result(m,N,marble_names):
 
     # select (m-N) marbles to not finish the race
     k = m-N
-    DNF_list = random.sample(marble_names,k)
+    DNF_list = sample(marble_names,k)
     # select marbles that did finish
     finished_list = [marble for marble in marble_names if marble not in DNF_list]
     # randomly assign order for placing
     place_assignments = list(range(1,N+1))
-    random.shuffle(place_assignments)
+    shuffle(place_assignments)
     # use dictionary to assign results
     race_result = dict()
     for ii in range(len(finished_list)):
